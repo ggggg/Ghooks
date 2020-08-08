@@ -1,0 +1,14 @@
+[
+    //user = {0}
+    {
+        "SenderName" : "{0}",
+
+        //please change the event before starting server
+        "Event" : "EXAMPLE_EVENT",
+
+        //please put the web hook link here
+        "webhookLink" : "",
+        "Response" : "{0} has went in the triggerbox"
+    }
+    
+]

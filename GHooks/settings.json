@@ -1,0 +1,40 @@
+{
+  "General": {
+    "Version": "0.1.0",
+    "MaxTicketsPerUser" : "5"
+  },
+  "Chat": {
+      /*
+         chat custom names:
+         {0} = Message
+         {1} = Sender username
+      */
+     
+     //please put the web hook link here, leave blank for disable
+     "GlobalChat" : "",
+     "GlobalFormat": "{0}",
+
+     //please put the web hook link here, leave blank for disable
+     "LocalChat": "",
+     "LocalFormat": "local: {0}",
+
+     //please put the web hook link here, leave blank for disable
+     "CommandsLog" : "",
+     "CommandsLogFormat" : "{0}"
+   },
+   "Server": {
+      /*
+         chat custom names:
+         {0} = User
+      */
+     //please put the web hook link here, leave blank for disable
+     "PlayerJoinLeave" : "",
+     "PlayerJoinFormat": "{0} has joined the server",
+     "PlayerLeaveFormat": "{0} has left the server",
+
+     //please put the web hook link here, leave blank for disable
+     "ServerStart" : "",
+     //cant use {0} here
+     "ServerStartMessage": "Server started"
+   }
+}
