@@ -9,7 +9,7 @@ namespace Webhooks.RegisteredEvents
         [Target(GameSourceEvent.PlayerDestroy, ExecutionMode.Event)]
         public void OnEvent(ShPlayer player)
         {
-            List<Embed> leaveEmb = new List<Embed>();
+            var leaveEmb = new List<Embed>();
 
             foreach (var em in Core.Instance.Settings.Server.PlayerLeaveEmbed)
             {
