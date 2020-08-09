@@ -30,7 +30,7 @@
       }],
 
       //please put the web hook link here, leave blank for disable
-      "LocalChat": "https://discordapp.com/api/webhooks/741815178844176416/2XL_m-BMsr6n2DpRaOHNanjgo-B8rG8gRrV_Yhxeko2R06dswsUTCscgbiOaHbmgyyrz",
+      "LocalChat": "",
       "LocalFormat": "local: {0}",
       "LocalUseEmbed":true,
       "LocalEmbed": [{
