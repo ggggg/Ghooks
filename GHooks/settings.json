@@ -1,40 +1,557 @@
 {
-  "General": {
-    "Version": "0.1.0",
-    "MaxTicketsPerUser" : "5"
-  },
-  "Chat": {
+   "General": {
+      "Version": "0.2.0"
+   },
+   "Chat": {
       /*
          chat custom names:
          {0} = Message
          {1} = Sender username
       */
-     
-     //please put the web hook link here, leave blank for disable
-     "GlobalChat" : "",
-     "GlobalFormat": "{0}",
 
-     //please put the web hook link here, leave blank for disable
-     "LocalChat": "",
-     "LocalFormat": "local: {0}",
+      //please put the web hook link here, leave blank for disable
+      "GlobalChat": "",
+      //Leave empty to disable
+      "GlobalFormat": "{0}",
+      "GlobalUseEmbed": true,
+      //List of discord embeds, add a , when the embed closes to add a new one
+      "GlobalEmbed": [{
+         //	Title of embed (do not set as null)
+         "title": "Global Message",
+         //	Type of embed (leave it in rich)
+         "type": "rich",
+         //	Description of embed (do not set as null)
+         "description": "{0}",
+         //	Url of embed
+         "url": null,
+         // Timestamp of embed content (not implemented, leave in null)
+         "timestamp": null,
+         //	Color code of the embed, use hex number colors
+         "color": 15158332,
+         //	Foter information
+         "footer": {
+            // Footer text
+            "text": "",
+            // Url of footer icon (only supports http(s) and attachments)
+            "icon_url": null,
+            // A proxied url of footer icon
+            "proxy_icon_url": null
+         },
+         //	Image information
+         "image": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	A proxied url of the image
+            "proxy_url": null,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         //	Thumbnail information
+         "thumbnail": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	A proxied url of the image
+            "proxy_url": null,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         // Video information
+         "video": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         // Provider information (just use if you know what this is for)
+         "provider": {
+            // Name of provider
+            "name": null,
+            // Url of provider
+            "url": null
+         },
+         //	Author information
+         "author": {
+            //	author information
+            "name": "",
+            //	url of author icon (only supports http(s) and attachments)
+            "icon_url": "",
+            //	a proxied url of author icon
+            "proxy_icon_url": null,
+            //	url of author
+            "url": null
+         },
+         /*
+         /        List of fields (remove field if not using, do not leave blank)
+         /        Each field is inside {}        
+         /
+         /        Format:
+         /        "name": Name of the field
+         /        "value": Value (text) of the field
+         /        "inline": Whether or not this field should display inline (true or false)
+         */
+         "fields": []
+      }],
 
-     //please put the web hook link here, leave blank for disable
-     "CommandsLog" : "",
-     "CommandsLogFormat" : "{0}"
+      //please put the web hook link here, leave blank for disable
+      "LocalChat": "",
+      //Leave empty to disable
+      "LocalFormat": "local: {0}",
+      "LocalUseEmbed": true,
+      //List of discord embeds, add a , when the embed closes to add a new one
+      "LocalEmbed": [{
+         //	Title of embed (do not set as null)
+         "title": "Local Chat",
+         //	Type of embed (leave it in rich)
+         "type": "rich",
+         //	Description of embed (do not set as null)
+         "description": "{0}",
+         //	Url of embed
+         "url": null,
+         // Timestamp of embed content (not implemented, leave in null)
+         "timestamp": null,
+         //	Color code of the embed, use hex number colors
+         "color": 15158332,
+         //	Foter information
+         "footer": {
+            // Footer text
+            "text": "",
+            // Url of footer icon (only supports http(s) and attachments)
+            "icon_url": null,
+            // A proxied url of footer icon
+            "proxy_icon_url": null
+         },
+         //	Image information
+         "image": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	A proxied url of the image
+            "proxy_url": null,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         //	Thumbnail information
+         "thumbnail": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	A proxied url of the image
+            "proxy_url": null,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         // Video information
+         "video": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         // Provider information (just use if you know what this is for)
+         "provider": {
+            // Name of provider
+            "name": null,
+            // Url of provider
+            "url": null
+         },
+         //	Author information
+         "author": {
+            //	author information
+            "name": "",
+            //	url of author icon (only supports http(s) and attachments)
+            "icon_url": "",
+            //	a proxied url of author icon
+            "proxy_icon_url": null,
+            //	url of author
+            "url": null
+         },
+         /*
+         /        List of fields (remove field if not using, do not leave blank)
+         /        Each field is inside {}        
+         /
+         /        Format:
+         /        "name": Name of the field
+         /        "value": Value (text) of the field
+         /        "inline": Whether or not this field should display inline (true or false)
+         */
+         "fields": []
+      }],
+
+      //please put the web hook link here, leave blank for disable
+      "CommandsLog": "",
+      //Leave empty to disable
+      "CommandsLogFormat": "{0}",
+      "CommandsUseEmbed": true,
+      //List of discord embeds, add a , when the embed closes to add a new one
+      "CommandsEmbed": [{
+         //	Title of embed (do not set as null)
+         "title": "Commands chat",
+         //	Type of embed (leave it in rich)
+         "type": "rich",
+         //	Description of embed (do not set as null)
+         "description": "{1} : {0}",
+         //	Url of embed
+         "url": null,
+         // Timestamp of embed content (not implemented, leave in null)
+         "timestamp": null,
+         //	Color code of the embed, use hex number colors
+         "color": 15158332,
+         //	Foter information
+         "footer": {
+            // Footer text
+            "text": "",
+            // Url of footer icon (only supports http(s) and attachments)
+            "icon_url": null,
+            // A proxied url of footer icon
+            "proxy_icon_url": null
+         },
+         //	Image information
+         "image": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	A proxied url of the image
+            "proxy_url": null,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         //	Thumbnail information
+         "thumbnail": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	A proxied url of the image
+            "proxy_url": null,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         // Video information
+         "video": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         // Provider information (just use if you know what this is for)
+         "provider": {
+            // Name of provider
+            "name": null,
+            // Url of provider
+            "url": null
+         },
+         //	Author information
+         "author": {
+            //	author information
+            "name": "",
+            //	url of author icon (only supports http(s) and attachments)
+            "icon_url": "",
+            //	a proxied url of author icon
+            "proxy_icon_url": null,
+            //	url of author
+            "url": null
+         },
+         /*
+         /        List of fields (remove field if not using, do not leave blank)
+         /        Each field is inside {}        
+         /
+         /        Format:
+         /        "name": Name of the field
+         /        "value": Value (text) of the field
+         /        "inline": Whether or not this field should display inline (true or false)
+         */
+         "fields": []
+      }]
    },
+
+   //please put the web hook link here, leave blank for disable
    "Server": {
       /*
          chat custom names:
          {0} = User
       */
-     //please put the web hook link here, leave blank for disable
-     "PlayerJoinLeave" : "",
-     "PlayerJoinFormat": "{0} has joined the server",
-     "PlayerLeaveFormat": "{0} has left the server",
 
-     //please put the web hook link here, leave blank for disable
-     "ServerStart" : "",
-     //cant use {0} here
-     "ServerStartMessage": "Server started"
+      //please put the web hook link here, leave blank for disable
+      "PlayerJoinLeave": "",
+      //Leave empty to disable
+      "PlayerJoinFormat": "{0} has joined the server",
+      "PlayerJoinUseEmbed": true,
+      //List of discord embeds, add a , when the embed closes to add a new one
+      "PlayerJoinEmbed": [{
+         //	Title of embed (do not set as null)
+         "title": "Server Join",
+         //	Type of embed (leave it in rich)
+         "type": "rich",
+         //	Description of embed (do not set as null)
+         "description": "{0} has joined the server",
+         //	Url of embed
+         "url": null,
+         // Timestamp of embed content (not implemented, leave in null)
+         "timestamp": null,
+         //	Color code of the embed, use hex number colors
+         "color": 15158332,
+         //	Foter information
+         "footer": {
+            // Footer text
+            "text": "",
+            // Url of footer icon (only supports http(s) and attachments)
+            "icon_url": null,
+            // A proxied url of footer icon
+            "proxy_icon_url": null
+         },
+         //	Image information
+         "image": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	A proxied url of the image
+            "proxy_url": null,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         //	Thumbnail information
+         "thumbnail": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	A proxied url of the image
+            "proxy_url": null,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         // Video information
+         "video": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         // Provider information (just use if you know what this is for)
+         "provider": {
+            // Name of provider
+            "name": null,
+            // Url of provider
+            "url": null
+         },
+         //	Author information
+         "author": {
+            //	author information
+            "name": "",
+            //	url of author icon (only supports http(s) and attachments)
+            "icon_url": "",
+            //	a proxied url of author icon
+            "proxy_icon_url": null,
+            //	url of author
+            "url": null
+         },
+         /*
+         /        List of fields (remove field if not using, do not leave blank)
+         /        Each field is inside {}        
+         /
+         /        Format:
+         /        "name": Name of the field
+         /        "value": Value (text) of the field
+         /        "inline": Whether or not this field should display inline (true or false)
+         */
+         "fields": []
+      }],
+      //Leave empty to disable
+      "PlayerLeaveFormat": "{0} has left the server",
+      "PlayerLeaveUseEmbed": false,
+      //List of discord embeds, add a , when the embed closes to add a new one
+      "PlayerLeaveEmbed": [{
+         //	Title of embed (do not set as null)
+         "title": "Server Left",
+         //	Type of embed (leave it in rich)
+         "type": "rich",
+         //	Description of embed (do not set as null)
+         "description": "{0} has left the server",
+         //	Url of embed
+         "url": null,
+         // Timestamp of embed content (not implemented, leave in null)
+         "timestamp": null,
+         //	Color code of the embed, use hex number colors
+         "color": 15158332,
+         //	Foter information
+         "footer": {
+            // Footer text
+            "text": "",
+            // Url of footer icon (only supports http(s) and attachments)
+            "icon_url": null,
+            // A proxied url of footer icon
+            "proxy_icon_url": null
+         },
+         //	Image information
+         "image": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	A proxied url of the image
+            "proxy_url": null,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         //	Thumbnail information
+         "thumbnail": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	A proxied url of the image
+            "proxy_url": null,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         // Video information
+         "video": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         // Provider information (just use if you know what this is for)
+         "provider": {
+            // Name of provider
+            "name": null,
+            // Url of provider
+            "url": null
+         },
+         //	Author information
+         "author": {
+            //	author information
+            "name": "",
+            //	url of author icon (only supports http(s) and attachments)
+            "icon_url": "",
+            //	a proxied url of author icon
+            "proxy_icon_url": null,
+            //	url of author
+            "url": null
+         },
+         /*
+         /        List of fields (remove field if not using, do not leave blank)
+         /        Each field is inside {}        
+         /
+         /        Format:
+         /        "name": Name of the field
+         /        "value": Value (text) of the field
+         /        "inline": Whether or not this field should display inline (true or false)
+         */
+         "fields": []
+      }],
+
+      //please put the web hook link here, leave blank for disable
+      "ServerStart": "",
+      //Leave empty to disable
+      //cant use {0} here
+      "ServerStartMessage": "Server started",
+      "ServerStartUseEmbed": true,
+      //List of discord embeds
+      //Each embed is inside {}, to add a new one add a comma at the end of the brackets
+      "ServerStartEmbed": [{
+         //	Title of embed (do not set as null)
+         "title": "Server Started",
+         //	Type of embed (leave it in rich)
+         "type": "rich",
+         //	Description of embed (do not set as null)
+         "description": "Server has started",
+         //	Url of embed
+         "url": null,
+         // Timestamp of embed content (not implemented, leave in null)
+         "timestamp": null,
+         //	Color code of the embed, use hex number colors
+         "color": 15158332,
+         //	Foter information
+         "footer": {
+            // Footer text
+            "text": "Example footer",
+            // Url of footer icon (only supports http(s) and attachments)
+            "icon_url": null,
+            // A proxied url of footer icon
+            "proxy_icon_url": null
+         },
+         //	Image information
+         "image": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	A proxied url of the image
+            "proxy_url": null,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         //	Thumbnail information
+         "thumbnail": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	A proxied url of the image
+            "proxy_url": null,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         // Video information
+         "video": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         // Provider information (just use if you know what this is for)
+         "provider": {
+            // Name of provider
+            "name": null,
+            // Url of provider
+            "url": null
+         },
+         //	Author information
+         "author": {
+            //	author information
+            "name": "Example author",
+            //	url of author icon (only supports http(s) and attachments)
+            "icon_url": "https://vignette.wikia.nocookie.net/breakingbad/images/e/e7/BB-S5B-Walt-590.jpg/revision/latest?cb=20130928055404",
+            //	a proxied url of author icon
+            "proxy_icon_url": null,
+            //	url of author
+            "url": null
+         },
+         /*
+         /        List of fields (remove field if not using, do not leave blank)
+         /        Each field is inside {}        
+         /
+         /        Format:
+         /        "name": Name of the field
+         /        "value": Value (text) of the field
+         /        "inline": Whether or not this field should display inline (true or false)
+         */
+         "fields": [{
+            "name": "Example field",
+            "value": "Example field description",
+            "inline": false
+         }]
+      }]
    }
 }

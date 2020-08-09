@@ -61,8 +61,10 @@ namespace Webhooks
             foreach (var customEvent in CustomEventReader.Parsed)
             {
                 Logger.LogInfo($"[CC] Registering custom event(s) for webhook {string.Join(", ", customEvent.Event)} by name '{customEvent.Event}'..");
-                EventsHandler.Add(customEvent.Event, new Action<ShPlayer, string>((player, eventName) => {
-                    if (player.HasPermission("webhook." + eventName)){
+                EventsHandler.Add(customEvent.Event, new Action<ShPlayer, string>((player, eventName) =>
+                {
+                    if (player.svPlayer.HasPermission("webhook." + eventName))
+                    {
                         return;
                     }
                     Logger.LogInfo($"cutstom event {customEvent.Event} was tiriggered");
@@ -77,7 +79,7 @@ namespace Webhooks
             CustomEventReader.Path = Paths.EventsFile;
         }
 
-        public void ReadConfigurationFiles()        
+        public void ReadConfigurationFiles()
         {
             SettingsReader.ReadAndParse();
             CustomEventReader.ReadAndParse();

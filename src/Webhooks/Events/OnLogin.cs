@@ -1,7 +1,5 @@
 ﻿using BrokeProtocol.API;
 using BrokeProtocol.Entities;
-using System.Collections.Specialized;
-using System.Net;
 
 namespace Webhooks.RegisteredEvents
 {
@@ -10,9 +8,9 @@ namespace Webhooks.RegisteredEvents
         [Target(GameSourceEvent.PlayerInitialize, ExecutionMode.Event)]
         public void OnEvent(ShPlayer player)
         {
-            Core.Instance.joinWebhook.Send(string.Format(Core.Instance.Settings.Server.PlayerJoinFormat, player.username), player.username);
+            Core.Instance.joinWebhook.Send(string.Format(Core.Instance.Settings.Server.PlayerJoinFormat, player.username), player.username, 
+                embeds: Core.Instance.Settings.Server.PlayerJoinUseEmbed? EmbedCrafter.CreateAllEmbeds(Core.Instance.Settings.Server.PlayerJoinEmbed,player) :null);
         }
     }
 
 }
-
