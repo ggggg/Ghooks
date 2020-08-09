@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Webhooks
 {
-    public class EmbedCrafter
+    public static class EmbedCrafter
     {
         public static List<Embed> CreateAllEmbeds(List<Embed> embeds, ShPlayer player)
         {
