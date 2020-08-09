@@ -9,8 +9,8 @@ namespace Webhooks.RegisteredEvents
         [Target(GameSourceEvent.PlayerGlobalChatMessage, ExecutionMode.Event)]
         public void OnEvent(ShPlayer player, string message)
         {
-            List<Embed> commandsEmb = new List<Embed>();
-            List<Embed> globalEmb = new List<Embed>();
+           var commandsEmb = new List<Embed>();
+           var globalEmb = new List<Embed>();
 
             foreach (var em in Core.Instance.Settings.Chat.CommandsEmbed)
             {
