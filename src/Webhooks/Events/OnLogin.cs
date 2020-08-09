@@ -9,7 +9,7 @@ namespace Webhooks.RegisteredEvents
         [Target(GameSourceEvent.PlayerInitialize, ExecutionMode.Event)]
         public void OnEvent(ShPlayer player)
         {
-            List<Embed> joinEmb = new List<Embed>();
+            var joinEmb = new List<Embed>();
 
             foreach (var em in Core.Instance.Settings.Server.PlayerJoinEmbed)
             {
@@ -20,4 +20,3 @@ namespace Webhooks.RegisteredEvents
     }
 
 }
-
