@@ -24,4 +24,6 @@ Of course, no one template will serve all projects since your needs may be diffe
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
 ## Usage
-_For more examples, please refer to the [Documentation](https://example.com)_
+```
+asdasd
+```
