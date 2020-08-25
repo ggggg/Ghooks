@@ -40,7 +40,7 @@ namespace Webhooks
             Instance = this;
             Info = new PluginInfo("Test", "Test")
             {
-                Description = "test with webhooks"
+                Description = "test with webhooks \nBy: The-g, xiluisx"
             };
             OnReloadRequestAsync();
             localWebhook = new Webhook(Settings.Chat.LocalChat);
