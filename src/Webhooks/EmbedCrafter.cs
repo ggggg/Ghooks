@@ -16,8 +16,8 @@ namespace Webhooks
                     Title = string.Format(embed.Title, player.username),
                     Description = string.Format(embed.Description, player.username),
                     Color = embed.Color,
-                    Footer = new EmbedFooter() { Text = string.Format(embed.Footer.Text, player.username), IconUrl = embed.Footer.IconUrl, ProxyIconUrl = embed.Footer.ProxyIconUrl },
-                    Author = new EmbedAuthor() { Name = string.Format(embed.Author.Name, player.username), IconUrl = embed.Author.IconUrl, ProxyIconUrl = embed.Author.ProxyIconUrl, Url = embed.Author.Url },
+                    Footer = new EmbedFooter { Text = string.Format(embed.Footer.Text, player.username), IconUrl = embed.Footer.IconUrl, ProxyIconUrl = embed.Footer.ProxyIconUrl },
+                    Author = new EmbedAuthor { Name = string.Format(embed.Author.Name, player.username), IconUrl = embed.Author.IconUrl, ProxyIconUrl = embed.Author.ProxyIconUrl, Url = embed.Author.Url },
                     Fields = new List<EmbedField>(embed.Fields.Select(c =>
                     {
                         c.Name = string.Format(c.Name, player.username);
@@ -45,8 +45,8 @@ namespace Webhooks
                     Title = string.Format(embed.Title,message,player.username),
                     Description = string.Format(embed.Description, message, player.username),
                     Color = embed.Color,
-                    Footer = new EmbedFooter() { Text = string.Format(embed.Footer.Text, message, player.username), IconUrl = embed.Footer.IconUrl, ProxyIconUrl = embed.Footer.ProxyIconUrl },
-                    Author = new EmbedAuthor() { Name = string.Format(embed.Author.Name, message, player.username), IconUrl = embed.Author.IconUrl, ProxyIconUrl = embed.Author.ProxyIconUrl, Url = embed.Author.Url },
+                    Footer = new EmbedFooter { Text = string.Format(embed.Footer.Text, message, player.username), IconUrl = embed.Footer.IconUrl, ProxyIconUrl = embed.Footer.ProxyIconUrl },
+                    Author = new EmbedAuthor { Name = string.Format(embed.Author.Name, message, player.username), IconUrl = embed.Author.IconUrl, ProxyIconUrl = embed.Author.ProxyIconUrl, Url = embed.Author.Url },
                     Fields = new List<EmbedField>(embed.Fields.Select(c =>
                     {
                         c.Name = string.Format(c.Name, message, player.username);
