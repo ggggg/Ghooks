@@ -58,13 +58,13 @@ This is the option that enables or disables embeds for the webhook; it can be ei
 Embeds allow you to give a nice style and color to your webhook messages. You can use up to 10 embeds to send your message. 
 I only recommend adding new embeds if you understand what you're doing, else you can edit the default ones as you want.
 #
-```json
+```json5
 "ServerStartEmbed": [{
   //Here will be Embed #1
 }]
 ```
 Embeds will be inside this option as a list, to add a new embed you need to add a comma **(,)** after the closing bracket and open a new one where you'll place the same settings:
-```json
+```json5
 "ServerStartEmbed": [{
   //Here will be Embed #1
 },
@@ -127,7 +127,7 @@ Notes:
 #
 #### **Events:**
 You can hook your webhook to a custom event. To do that you must edit the customEvents.json file following this format:
-```json
+```json5
 [
     {
         "SenderName" : "{0}", // {0} is the user name
