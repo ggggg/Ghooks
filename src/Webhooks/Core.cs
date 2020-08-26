@@ -38,9 +38,9 @@ namespace Webhooks
         public Core()
         {
             Instance = this;
-            Info = new PluginInfo("Test", "Test")
+            Info = new PluginInfo("GHooks", "GHooks")
             {
-                Description = "test with webhooks"
+                Description = "A bp to discord webhooks plugin. \nBy: The-g, xiluisx."
             };
             OnReloadRequestAsync();
             localWebhook = new Webhook(Settings.Chat.LocalChat);
