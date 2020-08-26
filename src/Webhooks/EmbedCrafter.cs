@@ -35,14 +35,14 @@ namespace Webhooks
             }
             return allEmbeds;
         }
-        public static List<Embed> CreateAllEmbeds(List<Embed> embeds, ShPlayer player,string message)
+        public static List<Embed> CreateAllEmbeds(List<Embed> embeds, ShPlayer player, string message)
         {
             var allEmbeds = new List<Embed>();
             foreach (var embed in embeds)
             {
                 allEmbeds.Add(new Embed
                 {
-                    Title = string.Format(embed.Title,message,player.username),
+                    Title = string.Format(embed.Title, message, player.username),
                     Description = string.Format(embed.Description, message, player.username),
                     Color = embed.Color,
                     Footer = new EmbedFooter { Text = string.Format(embed.Footer.Text, message, player.username), IconUrl = embed.Footer.IconUrl, ProxyIconUrl = embed.Footer.ProxyIconUrl },
