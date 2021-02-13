@@ -22,13 +22,13 @@ namespace Webhooks
 
         public SvManager SvManager { get; set; }
 
-        public Webhook localWebhook { get; set; }
-        public Webhook globalWebhook { get; set; }
-        public Webhook joinWebhook { get; set; }
-        public Webhook startWebhook { get; set; }
-        public Webhook commandWebhook { get; set; }
-        public Webhook deathWebhook { get; set; }
-        public Webhook crimeWebhook { get; set; }
+        public Webhook LocalWebhook { get; set; }
+        public Webhook GlobalWebhook { get; set; }
+        public Webhook JoinWebhook { get; set; }
+        public Webhook StartWebhook { get; set; }
+        public Webhook CommandWebhook { get; set; }
+        public Webhook DeathWebhook { get; set; }
+        public Webhook CrimeWebhook { get; set; }
 
         public Paths Paths { get; } = new Paths();
 
@@ -45,11 +45,12 @@ namespace Webhooks
                 Description = "A bp to discord webhooks plugin. \nBy: The-g, xiluisx."
             };
             OnReloadRequestAsync();
-            localWebhook = new Webhook(Settings.Chat.LocalChat);
-            globalWebhook = new Webhook(Settings.Chat.GlobalChat);
-            joinWebhook = new Webhook(Settings.Server.PlayerJoinLeave);
-            startWebhook = new Webhook(Settings.Server.ServerStart);
-            commandWebhook = new Webhook(Settings.Chat.CommandsLog);
+            LocalWebhook = new Webhook(Settings.Chat.LocalChat);
+            GlobalWebhook = new Webhook(Settings.Chat.GlobalChat);
+            JoinWebhook = new Webhook(Settings.Server.PlayerJoinLeave);
+            StartWebhook = new Webhook(Settings.Server.ServerStart);
+            CommandWebhook = new Webhook(Settings.Chat.CommandsLog);
+            DeathWebhook = new Webhook(Settings.General.DeathLog);
         }
         public async void OnReloadRequestAsync()
         {

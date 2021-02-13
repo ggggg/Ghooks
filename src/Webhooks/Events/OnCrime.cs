@@ -9,9 +9,9 @@ namespace Webhooks.Events
         [Target(GameSourceEvent.PlayerCrime, ExecutionMode.Event)]
         public void OnEvent(ShPlayer player, byte crimeIndex, ShPlayer victim)
         {
-            if (player.svPlayer.godMode || player.svPlayer.InvalidCrime(crimeIndex)) return;
+            if (!player.isHuman || player.svPlayer.godMode || player.svPlayer.InvalidCrime(crimeIndex)) return;
             Crime crime = player.manager.GetCrime(crimeIndex);
-            Core.Instance.crimeWebhook.Send(string.Format(Core.Instance.Settings.General.CrimeLogFormat, player.username, victim ? victim.username: "No victim", crime.crimeName), player.username, 
+            Core.Instance.CrimeWebhook.Send(string.Format(Core.Instance.Settings.General.CrimeLogFormat, player.username, victim ? victim.username: "No victim", crime.crimeName), player.username, 
                 embeds: Core.Instance.Settings.General.CrimeUseEmbed? EmbedCrafter.CreateAllEmbeds(Core.Instance.Settings.General.CrimeEmbed,player) :null);
         }
     }
