@@ -62,11 +62,15 @@ namespace Webhooks.Configuration.Models.SettingsModel
     {
         public string Version { get; set; }
 
+        public string DeathLog { get; set; }
+
         public string DeathLogFormat { get; set; }
 
         public bool DeathUseEmbed { get; set; }
 
         public List<Embed> DeathEmbed { get; set; }
+
+        public string CrimeLog { get; set; }
 
         public string CrimeLogFormat { get; set; }
 
