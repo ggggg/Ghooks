@@ -8,11 +8,12 @@ namespace Webhooks.Events
         [Target(GameSourceEvent.PlayerDeath, ExecutionMode.Event)]
         public void OnEvent(ShPlayer player, ShPlayer attacker)
         {
-            if(attacker && attacker.isHuman && attacker!=player)
+            if(!attacker || !attacker.isHuman || attacker==player)
             {
-                Core.Instance.DeathWebhook.Send(string.Format(Core.Instance.Settings.General.DeathLogFormat, player.username, attacker.username), player.username, 
-                embeds: Core.Instance.Settings.General.DeathUseEmbed? EmbedCrafter.CreateAllEmbeds(Core.Instance.Settings.General.DeathEmbed,player) :null);
+                return;
             }
+            Core.Instance.DeathWebhook.Send(string.Format(Core.Instance.Settings.General.DeathLogFormat, player.username, attacker.username), player.username, 
+                embeds: Core.Instance.Settings.General.DeathUseEmbed? EmbedCrafter.CreateAllEmbeds(Core.Instance.Settings.General.DeathEmbed,player) :null);
         }
     }
 }
