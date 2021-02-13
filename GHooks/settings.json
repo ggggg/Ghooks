@@ -1,6 +1,193 @@
 {
    "General": {
-      "Version": "0.2.0"
+      "Version": "0.2.1",
+
+      /*
+         Death custom names:
+         {0} = Player username
+         {1} = Attacker username
+      */
+      "DeathLog": "",
+      //Leave empty to disable
+      "DeathFormat": "{0} killed {1}",
+      "DeathUseEmbed": true,
+      //List of discord embeds, add a , when the embed closes to add a new one
+      "DeathEmbed": [{
+         //	Title of embed (do not set as null)
+         "title": "Death Message",
+         //	Type of embed (leave it in rich)
+         "type": "rich",
+         //	Description of embed (do not set as null)
+         "description": "{0}",
+         //	Url of embed
+         "url": null,
+         // Timestamp of embed content (not implemented, leave in null)
+         "timestamp": null,
+         //	Color code of the embed, use hex number colors
+         "color": 15158332,
+         //	Foter information
+         "footer": {
+            // Footer text
+            "text": "",
+            // Url of footer icon (only supports http(s) and attachments)
+            "icon_url": null,
+            // A proxied url of footer icon
+            "proxy_icon_url": null
+         },
+         //	Image information
+         "image": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	A proxied url of the image
+            "proxy_url": null,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         //	Thumbnail information
+         "thumbnail": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	A proxied url of the image
+            "proxy_url": null,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         // Video information
+         "video": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         // Provider information (just use if you know what this is for)
+         "provider": {
+            // Name of provider
+            "name": null,
+            // Url of provider
+            "url": null
+         },
+         //	Author information
+         "author": {
+            //	author information
+            "name": "",
+            //	url of author icon (only supports http(s) and attachments)
+            "icon_url": "",
+            //	a proxied url of author icon
+            "proxy_icon_url": null,
+            //	url of author
+            "url": null
+         },
+         /*
+         /        List of fields (remove field if not using, do not leave blank)
+         /        Each field is inside {}        
+         /
+         /        Format:
+         /        "name": Name of the field
+         /        "value": Value (text) of the field
+         /        "inline": Whether or not this field should display inline (true or false)
+         */
+         "fields": []
+      }],
+      
+      /*
+         Crimes custom names:
+         {0} = Player username
+         {1} = Victim username
+         {2} = Crime name
+      */
+      "CrimeLog": "",
+      //Leave empty to disable
+      "CrimeFormat": "{0} commited crime {2} to {1}",
+      "CrimeUseEmbed": true,
+      //List of discord embeds, add a , when the embed closes to add a new one
+      "CrimeEmbed": [{
+         //	Title of embed (do not set as null)
+         "title": "Crime Message",
+         //	Type of embed (leave it in rich)
+         "type": "rich",
+         //	Description of embed (do not set as null)
+         "description": "{0}",
+         //	Url of embed
+         "url": null,
+         // Timestamp of embed content (not implemented, leave in null)
+         "timestamp": null,
+         //	Color code of the embed, use hex number colors
+         "color": 15158332,
+         //	Foter information
+         "footer": {
+            // Footer text
+            "text": "",
+            // Url of footer icon (only supports http(s) and attachments)
+            "icon_url": null,
+            // A proxied url of footer icon
+            "proxy_icon_url": null
+         },
+         //	Image information
+         "image": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	A proxied url of the image
+            "proxy_url": null,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         //	Thumbnail information
+         "thumbnail": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	A proxied url of the image
+            "proxy_url": null,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         // Video information
+         "video": {
+            // Height of image
+            "height": 0,
+            // Width of image
+            "width": 0,
+            //	Source url of image (only supports http(s) and attachments)
+            "url": null
+         },
+         // Provider information (just use if you know what this is for)
+         "provider": {
+            // Name of provider
+            "name": null,
+            // Url of provider
+            "url": null
+         },
+         //	Author information
+         "author": {
+            //	author information
+            "name": "",
+            //	url of author icon (only supports http(s) and attachments)
+            "icon_url": "",
+            //	a proxied url of author icon
+            "proxy_icon_url": null,
+            //	url of author
+            "url": null
+         },
+         /*
+         /        List of fields (remove field if not using, do not leave blank)
+         /        Each field is inside {}        
+         /
+         /        Format:
+         /        "name": Name of the field
+         /        "value": Value (text) of the field
+         /        "inline": Whether or not this field should display inline (true or false)
+         */
+         "fields": []
+      }]
    },
    "Chat": {
       /*

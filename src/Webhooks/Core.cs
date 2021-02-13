@@ -27,6 +27,8 @@ namespace Webhooks
         public Webhook joinWebhook { get; set; }
         public Webhook startWebhook { get; set; }
         public Webhook commandWebhook { get; set; }
+        public Webhook deathWebhook { get; set; }
+        public Webhook crimeWebhook { get; set; }
 
         public Paths Paths { get; } = new Paths();
 
@@ -67,7 +69,7 @@ namespace Webhooks
                     {
                         return;
                     }
-                    Logger.LogInfo($"cutstom event {customEvent.Event} was tiriggered");
+                    Logger.LogInfo($"Custom event {customEvent.Event} was triggered.");
                     Webhook web = new Webhook(customEvent.webhookLink);
                     web.Send(string.Format(customEvent.Response, player.username), string.Format(customEvent.SenderName, player.username));
                 }));
