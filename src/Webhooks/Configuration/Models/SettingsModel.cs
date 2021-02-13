@@ -7,6 +7,7 @@ namespace Webhooks.Configuration.Models.SettingsModel
         public General General { get; set; }
 
         public Chat Chat { get; set; }
+
         public Server Server { get; set; }
     }
 
@@ -60,5 +61,17 @@ namespace Webhooks.Configuration.Models.SettingsModel
     public class General
     {
         public string Version { get; set; }
+
+        public string DeathLogFormat { get; set; }
+
+        public bool DeathUseEmbed { get; set; }
+
+        public List<Embed> DeathEmbed { get; set; }
+
+        public string CrimeLogFormat { get; set; }
+
+        public bool CrimeUseEmbed { get; set; }
+
+        public List<Embed> CrimeEmbed { get; set; }
     }
 }
