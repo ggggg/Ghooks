@@ -40,7 +40,7 @@ namespace Webhooks
                     continue;
                 }
                 Core.Instance.Logger.LogError($"{file.Key} was not found; downloading.");
-                var content = await Client.GetStringAsync($"https://raw.githubusercontent.com/ggggg/file-download/master/{file.Key}");
+                var content = await Client.GetStringAsync($"https://raw.githubusercontent.com/ggggg/Ghooks/master/GHooks/{file.Key}");
                 File.WriteAllText(file.Value, content);
                 Core.Instance.Logger.LogInfo($"{file.Key} was downloaded.");
             }
