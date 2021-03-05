@@ -283,9 +283,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\Models\CustomEvents.cs" />
-    <Compile Include="Configuration\Models\SettingsModel.cs" />
+    <Compile Include="Configuration\Models\WebHookModel.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Embed.cs" />
+    <Compile Include="EmbedCrafter.cs" />
+    <Compile Include="Events\OnCrime.cs" />
+    <Compile Include="Events\OnDeath.cs" />
     <Compile Include="Events\OnLocalChatMessage.cs" />
     <Compile Include="Events\OnGlobalChatMessage.cs" />
     <Compile Include="Events\OnStarted.cs" />
