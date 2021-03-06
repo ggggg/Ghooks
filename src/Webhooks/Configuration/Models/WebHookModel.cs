@@ -22,7 +22,7 @@ namespace Webhooks.Configuration.Models
         {
             var webhook = new Webhook(Url)
             {
-                Embeds = Embeds,
+                Embeds = Embeds?.Count  > 0 ? EmbedCrafter.CreateAllEmbeds(Embeds, args) : new List<Embed>()  ,
                 AvatarUrl = AvatarUrl,
                 Content = string.Format(Format, args),
                 Username = string.Format(Username, args)

@@ -17,7 +17,10 @@ namespace Webhooks
         OnLeave,
         OnLogin,
         OnCrime,
-        OnStarted
+        OnStarted,
+        OnChat,
+        OnCommand,
+        OnLocal
     }
     public class Core : Plugin
     {
