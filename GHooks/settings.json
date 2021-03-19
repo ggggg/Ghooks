@@ -11,29 +11,31 @@
 */
 {
    /*
-      OnDeath custom names:
+      OnDeath custom values:
       {0} = Player username
       {1} = Attacker username
    */
    /*
-      OnCrime custom names:
+      OnCrime custom values:
       {0} = Player username
       {1} = Victim username
       {2} = Crime name
    */
    /*
-      OnChat / OnLocal / OnCommand custom names:
+      OnChat / OnLocal / OnCommand custom values:
       {0} = Message
       {1} = Sender username
    */
    /*
-      OnLogin custom names:
+      OnLogin custom values:
       {0} = User
    */
 
    // example event, works the same with other events types
    "OnDeath": {
+      // you can use custom values here
       "Username" : "Death log bot",
+      // you can use custom values here
       "Format": "{0} killed {1}",
       // change this to the webhook url
       "Url" : "webhook.link",
@@ -50,8 +52,6 @@
             "description": "{0}",
             //	Url of embed
             "url": null,
-            // Timestamp of embed content (not implemented, leave in null)
-            "timestamp": null,
             //	Color code of the embed, use hex number colors
             "color": 15158332,
             //	Foter information
@@ -113,14 +113,13 @@
                "url": null
             },
             /*
-         /        List of fields (remove field if not using, do not leave blank)
-         /        Each field is inside {}        
-         /
-         /        Format:
-         /        "name": Name of the field
-         /        "value": Value (text) of the field
-         /        "inline": Whether or not this field should display inline (true or false)
-         */
+               List of fields (remove field if not using, do not leave blank)
+               Each field is inside {}        
+               Format:
+               "name": Name of the field
+               "value": Value (text) of the field
+               "inline": Whether or not this field should display inline (true or false)
+            */
             "fields": []
          }
       ]
