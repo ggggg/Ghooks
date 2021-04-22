@@ -87,9 +87,9 @@ namespace Webhooks
             foreach (var customEvent in CustomEventReader.Parsed)
             {
                 Logger.LogInfo($"[CC] Registering custom event(s) for webhook {string.Join(", ", customEvent.Event)} by name '{customEvent.Event}'..");
-                EventsHandler.Add(customEvent.Event, new Action<ShPlayer, string>((player, eventName) =>
+                EventsHandler.Add(customEvent.Event, new Action<ShEntity, ShPhysical>((trigger, physical) =>
                 {
-                    if (player.svPlayer.HasPermission("webhook." + eventName))
+                    if (!(physical is ShPlayer player) || player.svPlayer.HasPermission("webhook."+customEvent.Event))
                     {
                         return;
                     }
