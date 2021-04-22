@@ -56,7 +56,7 @@ namespace Webhooks
             //Send the request then wait here until it returns
             yield return handler.SendWebRequest();
 
-            if (handler.isNetworkError)
+            if (handler.result== UnityWebRequest.Result.ConnectionError)
             {
                 Core.Instance.Logger.LogError("Webhook request failed: " + handler.error);
             }
