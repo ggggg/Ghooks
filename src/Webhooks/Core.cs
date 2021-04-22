@@ -8,10 +8,20 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 using Webhooks.Configuration.Models;
-using Webhooks.Configuration.Models.SettingsModel;
 
 namespace Webhooks
 {
+    public enum DefaultEvents
+    {
+        OnDeath,
+        OnLeave,
+        OnLogin,
+        OnCrime,
+        OnStarted,
+        OnChat,
+        OnCommand,
+        OnLocal
+    }
     public class Core : Plugin
     {
         public static Core Instance { get; internal set; }
@@ -22,20 +32,14 @@ namespace Webhooks
 
         public SvManager SvManager { get; set; }
 
-        public Webhook LocalWebhook { get; set; }
-        public Webhook GlobalWebhook { get; set; }
-        public Webhook JoinWebhook { get; set; }
-        public Webhook StartWebhook { get; set; }
-        public Webhook CommandWebhook { get; set; }
-        public Webhook DeathWebhook { get; set; }
-        public Webhook CrimeWebhook { get; set; }
-
         public Paths Paths { get; } = new Paths();
 
-        public IReader<Settings> SettingsReader { get; } = new Reader<Settings>();
+        private IReader<Dictionary<string, WebHookModel>> SettingsReader { get; } = new Reader<Dictionary<string, WebHookModel>>();
 
-        public Settings Settings => SettingsReader.Parsed;
-        public IReader<List<CustomEvent>> CustomEventReader { get; } = new Reader<List<CustomEvent>>();
+        private Dictionary<string, WebHookModel> Settings => SettingsReader.Parsed;
+        private IReader<List<CustomEvent>> CustomEventReader { get; } = new Reader<List<CustomEvent>>();
+
+        private Dictionary<DefaultEvents, WebHookModel> Webhooks { get; set; }
 
         public Core()
         {
@@ -45,21 +49,40 @@ namespace Webhooks
                 Description = "A bp to discord webhooks plugin. \nBy: The-g, xiluisx."
             };
             OnReloadRequestAsync();
-            LocalWebhook = new Webhook(Settings.Chat.LocalChat);
-            GlobalWebhook = new Webhook(Settings.Chat.GlobalChat);
-            JoinWebhook = new Webhook(Settings.Server.PlayerJoinLeave);
-            StartWebhook = new Webhook(Settings.Server.ServerStart);
-            CommandWebhook = new Webhook(Settings.Chat.CommandsLog);
-            DeathWebhook = new Webhook(Settings.General.DeathLog);
+            RegisterCustomEvents();
         }
-        public async void OnReloadRequestAsync()
+        private async void OnReloadRequestAsync()
         {
             SetConfigurationFilePaths();
             await FileChecker.CheckFiles();
             ReadConfigurationFiles();
-            RegisterCustomCommands();
+            RegisterWebhooks();
         }
-        public void RegisterCustomCommands()
+
+        private void RegisterWebhooks()
+        {
+            Webhooks = new Dictionary<DefaultEvents, WebHookModel>();
+            foreach (DefaultEvents key in Enum.GetValues(typeof(DefaultEvents)))
+            {
+                var stringKey = key.ToString();
+                if (!Settings.ContainsKey(stringKey))
+                {
+                    continue;
+                }
+                Webhooks[key] = Settings[stringKey];
+            }
+        }
+
+        public void SendDefaultEvent(DefaultEvents defaultEvent, params object[] args)
+        {
+            if (!Webhooks.ContainsKey(defaultEvent))
+            {
+                return;
+            }
+            Webhooks[defaultEvent].send(args);
+        }
+
+        private void RegisterCustomEvents()
         {
             foreach (var customEvent in CustomEventReader.Parsed)
             {
@@ -71,18 +94,19 @@ namespace Webhooks
                         return;
                     }
                     Logger.LogInfo($"Custom event {customEvent.Event} was triggered.");
-                    Webhook web = new Webhook(customEvent.webhookLink);
+                    var web = new Webhook(customEvent.webhookLink);
                     web.Send(string.Format(customEvent.Response, player.username), string.Format(customEvent.SenderName, player.username));
                 }));
             }
         }
-        public void SetConfigurationFilePaths()
+
+        private void SetConfigurationFilePaths()
         {
             SettingsReader.Path = Paths.SettingsFile;
             CustomEventReader.Path = Paths.EventsFile;
         }
 
-        public void ReadConfigurationFiles()
+        private void ReadConfigurationFiles()
         {
             SettingsReader.ReadAndParse();
             CustomEventReader.ReadAndParse();

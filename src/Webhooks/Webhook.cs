@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using UnityEngine.Networking;
 
 namespace Webhooks
 {
@@ -37,14 +39,30 @@ namespace Webhooks
         {
         }
 
-        public async Task<HttpResponseMessage> Send()
+        public void Send()
         {
-            var content = new StringContent(JsonConvert.SerializeObject(this), Encoding.UTF8, "application/json");
-            return await _httpClient.PostAsync(_webhookUrl, content);
+            Core.Instance.SvManager.StartCoroutine(PostRequest());
         }
+        private IEnumerator PostRequest()
+        {
+            var content = new System.Text.UTF8Encoding().GetBytes(JsonConvert.SerializeObject(this));
+            var handler = new UnityWebRequest(_webhookUrl, "POST")
+            {
+                uploadHandler = new UploadHandlerRaw(content),
+                downloadHandler = new DownloadHandlerBuffer()
+            };
+            handler.SetRequestHeader("Content-Type", "application/json");
+            
+            //Send the request then wait here until it returns
+            yield return handler.SendWebRequest();
 
+            if (handler.isNetworkError)
+            {
+                Core.Instance.Logger.LogError("Webhook request failed: " + handler.error);
+            }
+        }
         // ReSharper disable once InconsistentNaming
-        public async Task<HttpResponseMessage> Send(string content, string username = null, string avatarUrl = null, bool isTTS = false, IEnumerable<Embed> embeds = null)
+        public void Send(string content, string username = null, string avatarUrl = null, bool isTTS = false, IEnumerable<Embed> embeds = null)
         {
             Content = content;
             Username = username;
@@ -56,7 +74,7 @@ namespace Webhooks
                 Embeds.AddRange(embeds);
             }
 
-            return await Send();
+            Send();
         }
     }
 }

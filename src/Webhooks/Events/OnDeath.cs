@@ -12,8 +12,7 @@ namespace Webhooks.Events
             {
                 return;
             }
-            Core.Instance.DeathWebhook.Send(string.Format(Core.Instance.Settings.General.DeathLogFormat, player.username, attacker.username), player.username, 
-                embeds: Core.Instance.Settings.General.DeathUseEmbed? EmbedCrafter.CreateAllEmbeds(Core.Instance.Settings.General.DeathEmbed,player) :null);
+            Core.Instance.SendDefaultEvent(DefaultEvents.OnDeath, player.username, attacker.username);
         }
     }
 }
