@@ -9,7 +9,7 @@ namespace Webhooks.Events
         [Execution(ExecutionMode.Event)]
         public override bool Death(ShDestroyable destroyable, ShPlayer attacker)
         {
-            if(!attacker || !attacker.isHuman || attacker== destroyable.Player)
+            if(!attacker || !attacker.isHuman || attacker.ID== destroyable.ID)
             {
                 return true;
             }
