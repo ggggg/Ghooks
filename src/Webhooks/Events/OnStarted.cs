@@ -3,13 +3,14 @@ using BrokeProtocol.Managers;
 
 namespace Webhooks.RegisteredEvents
 {
-    public class OnStarted : IScript
+    public class OnStarted : ManagerEvents
     {
-        [Target(GameSourceEvent.ManagerStart, ExecutionMode.Event)]
-        public void OnEvent(SvManager svManager)
+        [Execution(ExecutionMode.Event)]
+        public override bool Start()
         {
-            Core.Instance.SvManager = svManager;
+            Core.Instance.SvManager = SvManager.Instance;
             Core.Instance.SendDefaultEvent(DefaultEvents.OnStarted);
+            return true;
         }
     }
 }

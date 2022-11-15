@@ -45,8 +45,20 @@
     <DelaySign>false</DelaySign>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="!GameSource">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\BROKE PROTOCOL\Plugins\!GameSource.dll</HintPath>
+    </Reference>
+    <Reference Include="!LifeSource">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\BROKE PROTOCOL\Plugins\!LifeSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\BROKE PROTOCOL\BrokeProtocol_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="AstarPathfindingProject">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\BROKE PROTOCOL\BrokeProtocol_Data\Managed\AstarPathfindingProject.dll</HintPath>
+    </Reference>
     <Reference Include="BP-CoreLib">
-      <HintPath>lib\BP-CoreLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\BROKE PROTOCOL\Plugins\BP-CoreLib.dll</HintPath>
     </Reference>
     <Reference Include="BPEssentials, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -55,26 +67,32 @@
     <Reference Include="EmbedIO">
       <HintPath>lib\Managed\EmbedIO.dll</HintPath>
     </Reference>
+    <Reference Include="ENet-CSharp">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\BROKE PROTOCOL\BrokeProtocol_Data\Managed\ENet-CSharp.dll</HintPath>
+    </Reference>
     <Reference Include="LiteDB">
-      <HintPath>lib\Managed\LiteDB.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\BROKE PROTOCOL\BrokeProtocol_Data\Managed\LiteDB.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\Managed\Mono.Posix.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\BROKE PROTOCOL\BrokeProtocol_Data\Managed\Mono.Security.dll</HintPath>
     </Reference>
     <Reference Include="NavMeshComponents">
       <HintPath>lib\Managed\NavMeshComponents.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Managed\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\BROKE PROTOCOL\BrokeProtocol_Data\Managed\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RestClient">
-      <HintPath>lib\Managed\RestClient.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\BROKE PROTOCOL\BrokeProtocol_Data\Managed\RestClient.dll</HintPath>
     </Reference>
     <Reference Include="Scripts, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Managed\Scripts.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\BROKE PROTOCOL\BrokeProtocol_Data\Managed\Scripts.dll</HintPath>
     </Reference>
     <Reference Include="SharedMemory, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -137,7 +155,7 @@
       <HintPath>lib\Managed\UnityEngine.ClusterRendererModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>lib\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\BROKE PROTOCOL\BrokeProtocol_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CrashReportingModule">
       <HintPath>lib\Managed\UnityEngine.CrashReportingModule.dll</HintPath>
@@ -254,7 +272,7 @@
       <HintPath>lib\Managed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestModule">
-      <HintPath>lib\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\BROKE PROTOCOL\BrokeProtocol_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestTextureModule">
       <HintPath>lib\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
@@ -306,6 +324,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetFileName)" "D:\Steam\steamapps\common\BROKE PROTOCOL\Plugins\"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

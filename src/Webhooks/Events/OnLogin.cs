@@ -3,13 +3,14 @@ using BrokeProtocol.Entities;
 
 namespace Webhooks.RegisteredEvents
 {
-    public class OnLogin : IScript
+    public class OnLogin : PlayerEvents
     {
-        [Target(GameSourceEvent.PlayerInitialize, ExecutionMode.Event)]
-        public void OnEvent(ShPlayer player)
+        [Execution(ExecutionMode.Event)]
+        public override bool Initialize(ShEntity entity)
         {
-            if(!player.isHuman) return;
-            Core.Instance.SendDefaultEvent(DefaultEvents.OnLogin, player.username);
+            if(!entity.Player.isHuman) return true;
+            Core.Instance.SendDefaultEvent(DefaultEvents.OnLogin, entity.Player.username);
+            return true;
         }
     }
 

@@ -3,12 +3,13 @@ using BrokeProtocol.Entities;
 
 namespace Webhooks.RegisteredEvents
 {
-    public class OnLeave : IScript
+    public class OnLeave : PlayerEvents
     {
-        [Target(GameSourceEvent.PlayerDestroy, ExecutionMode.Event)]
-        public void OnEvent(ShPlayer player)
+        [Execution(ExecutionMode.Event)]
+        public override bool Destroy(ShEntity entity)
         {
-            Core.Instance.SendDefaultEvent(DefaultEvents.OnLeave, player.username);
+            Core.Instance.SendDefaultEvent(DefaultEvents.OnLeave, entity.Player.username);
+            return true;
         }
     }
 }

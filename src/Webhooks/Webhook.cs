@@ -5,13 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using UnityEngine.Networking;
+using UnityEngine;
+using BrokeProtocol.Managers;
+using BrokeProtocol.API;
+using System.Net;
+using System.Collections.Specialized;
 
 namespace Webhooks
 {
     [JsonObject]
-    public class Webhook
+    public class Webhook : ManagerEvents
     {
         private readonly HttpClient _httpClient;
+
         private readonly string _webhookUrl;
 
         [JsonProperty("content")]
@@ -41,22 +47,23 @@ namespace Webhooks
 
         public void Send()
         {
-            Core.Instance.SvManager.StartCoroutine(PostRequest());
+            SvManager.Instance.StartCoroutine(PostRequest());
         }
         private IEnumerator PostRequest()
         {
             var content = new System.Text.UTF8Encoding().GetBytes(JsonConvert.SerializeObject(this));
+
             var handler = new UnityWebRequest(_webhookUrl, "POST")
             {
                 uploadHandler = new UploadHandlerRaw(content),
                 downloadHandler = new DownloadHandlerBuffer()
             };
             handler.SetRequestHeader("Content-Type", "application/json");
-            
+
             //Send the request then wait here until it returns
             yield return handler.SendWebRequest();
 
-            if (handler.result== UnityWebRequest.Result.ConnectionError)
+            if (handler.result == UnityWebRequest.Result.ProtocolError)
             {
                 Core.Instance.Logger.LogError("Webhook request failed: " + handler.error);
             }
@@ -65,6 +72,13 @@ namespace Webhooks
         public void Send(string content, string username = null, string avatarUrl = null, bool isTTS = false, IEnumerable<Embed> embeds = null)
         {
             Content = content;
+
+            // Checks if valid URL if not sets the url to null
+            if (!Configuration.Models.WebHookModel.CheckURLValid(AvatarUrl))
+            {
+                AvatarUrl = null;
+            }
+
             Username = username;
             AvatarUrl = avatarUrl;
             IsTTS = isTTS;

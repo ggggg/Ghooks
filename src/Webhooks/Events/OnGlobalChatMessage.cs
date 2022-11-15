@@ -3,12 +3,13 @@ using BrokeProtocol.Entities;
 
 namespace Webhooks.RegisteredEvents
 {
-    public class OnGlobalChatMessage : IScript
+    public class OnGlobalChatMessage : PlayerEvents
     {
-        [Target(GameSourceEvent.PlayerGlobalChatMessage, ExecutionMode.Event)]
-        public void OnEvent(ShPlayer player, string message)
+        [Execution(ExecutionMode.Event)]
+        public override bool GlobalChatMessage(ShPlayer player, string message)
         {
             Core.Instance.SendDefaultEvent(message.StartsWith("/") ? DefaultEvents.OnCommand : DefaultEvents.OnChat, player.username, message);
+            return true;
         }
     }
 }

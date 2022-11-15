@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 using Webhooks.Configuration.Models;
+using UnityEngine;
 
 namespace Webhooks
 {
@@ -28,7 +29,7 @@ namespace Webhooks
 
         public static string Version { get; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
 
-        public ILogger Logger { get; } = new Logger();
+        public BPCoreLib.Interfaces.ILogger Logger { get; } = new BPCoreLib.Util.Logger();
 
         public SvManager SvManager { get; set; }
 

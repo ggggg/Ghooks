@@ -1,18 +1,20 @@
 using BrokeProtocol.API;
 using BrokeProtocol.Entities;
+using UnityEngine;
 
 namespace Webhooks.Events
 {
-    public class OnDeath : IScript
+    public class OnDeath : PlayerEvents
     {
-        [Target(GameSourceEvent.PlayerDeath, ExecutionMode.Event)]
-        public void OnEvent(ShPlayer player, ShPlayer attacker)
+        [Execution(ExecutionMode.Event)]
+        public override bool Death(ShDestroyable destroyable, ShPlayer attacker)
         {
-            if(!attacker || !attacker.isHuman || attacker==player)
+            if(!attacker || !attacker.isHuman || attacker== destroyable.Player)
             {
-                return;
+                return true;
             }
-            Core.Instance.SendDefaultEvent(DefaultEvents.OnDeath, player.username, attacker.username);
+            Core.Instance.SendDefaultEvent(DefaultEvents.OnDeath, destroyable.Player.username, attacker.username);
+            return true;
         }
     }
 }
