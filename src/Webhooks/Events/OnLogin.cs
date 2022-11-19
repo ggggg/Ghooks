@@ -8,7 +8,7 @@ namespace Webhooks.RegisteredEvents
         [Execution(ExecutionMode.Event)]
         public override bool Initialize(ShEntity entity)
         {
-            if(!entity.Player.isHuman) return true;
+            if(!entity.Player || !entity.Player.isHuman) return true;
             Core.Instance.SendDefaultEvent(DefaultEvents.OnLogin, entity.Player.username);
             return true;
         }
