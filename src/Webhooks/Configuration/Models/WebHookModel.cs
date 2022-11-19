@@ -39,8 +39,7 @@ namespace Webhooks.Configuration.Models
         // This is for cheking the AvatarURL, literally this was causing a BadRequest
         public static bool CheckURLValid(string source)
         {
-            Uri uriResult;
-            return Uri.TryCreate(source, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttp;
+            return Uri.TryCreate(source, UriKind.Absolute, out var uriResult) && uriResult.Scheme == Uri.UriSchemeHttp;
         }
     }
 }
