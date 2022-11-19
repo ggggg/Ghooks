@@ -14,7 +14,7 @@ using System.Collections.Specialized;
 namespace Webhooks
 {
     [JsonObject]
-    public class Webhook : ManagerEvents
+    public class Webhook
     {
         private readonly HttpClient _httpClient;
 
@@ -47,7 +47,7 @@ namespace Webhooks
 
         public void Send()
         {
-            SvManager.Instance.StartCoroutine(PostRequest());
+            Core.Instance.SvManager.StartCoroutine(PostRequest());
         }
         private IEnumerator PostRequest()
         {
