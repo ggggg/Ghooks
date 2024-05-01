@@ -26,8 +26,6 @@ namespace Webhooks
     {
         public static Core Instance { get; internal set; }
 
-        public static string Version { get; } = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
-
         public ILogger Logger { get; } = new Logger();
 
         public SvManager SvManager { get; set; }
