@@ -34,7 +34,7 @@ namespace Webhooks
 
         private IReader<Dictionary<string, WebHookModel>> SettingsReader { get; } = new Reader<Dictionary<string, WebHookModel>>();
 
-        private Dictionary<string, WebHookModel> Settings => SettingsReader.Parsed;
+        private Dictionary<string, WebHookModel> Settings => SettingsReader.Content;
         private IReader<List<CustomEvent>> CustomEventReader { get; } = new Reader<List<CustomEvent>>();
 
         private Dictionary<DefaultEvents, WebHookModel> Webhooks { get; set; }
@@ -82,7 +82,7 @@ namespace Webhooks
 
         private void RegisterCustomEvents()
         {
-            foreach (var customEvent in CustomEventReader.Parsed)
+            foreach (var customEvent in CustomEventReader.Content)
             {
                 Logger.LogInfo($"[CC] Registering custom event(s) for webhook {string.Join(", ", customEvent.Event)} by name '{customEvent.Event}'..");
                 EventsHandler.Add(customEvent.Event, new Action<ShEntity, ShPhysical>((trigger, physical) =>
@@ -106,8 +106,8 @@ namespace Webhooks
 
         private void ReadConfigurationFiles()
         {
-            SettingsReader.ReadAndParse();
-            CustomEventReader.ReadAndParse();
+            SettingsReader.Read();
+            CustomEventReader.Read();
         }
     }
 }
