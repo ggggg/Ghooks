@@ -14,8 +14,8 @@ namespace Webhooks
 
         public static Dictionary<string, string> RequiredFiles { get; } = new Dictionary<string, string>
         {
-            {"settings.json", Core.Instance.Paths.SettingsFile},
-            {"customEvents.json", Core.Instance.Paths.EventsFile}
+            {"settings.json", Paths.SettingsFile},
+            {"customEvents.json", Paths.EventsFile}
         };
 
         public static HttpClient Client { get; } = new HttpClient();

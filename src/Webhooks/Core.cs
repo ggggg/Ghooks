@@ -28,14 +28,12 @@ namespace Webhooks
 
         public ILogger Logger { get; } = new Logger();
 
-        public SvManager SvManager { get; set; }
+        public SvManager SvManager => SvManager.Instance;
 
-        public Paths Paths { get; } = new Paths();
-
-        private IReader<Dictionary<string, WebHookModel>> SettingsReader { get; } = new Reader<Dictionary<string, WebHookModel>>();
+        private IReader<Dictionary<string, WebHookModel>> SettingsReader { get; } = new Reader<Dictionary<string, WebHookModel>>(Paths.SettingsFile);
 
         private Dictionary<string, WebHookModel> Settings => SettingsReader.Content;
-        private IReader<List<CustomEvent>> CustomEventReader { get; } = new Reader<List<CustomEvent>>();
+        private IReader<List<CustomEvent>> CustomEventReader { get; } = new Reader<List<CustomEvent>>(Paths.EventsFile);
 
         private Dictionary<DefaultEvents, WebHookModel> Webhooks { get; set; }
 

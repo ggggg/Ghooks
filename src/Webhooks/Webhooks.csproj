@@ -303,6 +303,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetFileName)" "D:\Steam\steamapps\common\BROKE PROTOCOL\Plugins\"</PostBuildEvent>
+    <PostBuildEvent>copy /Y "$(TargetFileName)" "$(BPDIR)\Plugins\"</PostBuildEvent>
   </PropertyGroup>
 </Project>

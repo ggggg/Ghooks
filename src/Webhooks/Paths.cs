@@ -6,9 +6,9 @@ namespace Webhooks
     {
         public static string Folder { get; } = "GHooks";
 
-        public string SettingsFile { get; } = Path.Combine(Folder, "settings.json");
+        public static string SettingsFile { get; } = Path.Combine(Folder, "settings.json");
 
-        public string EventsFile { get; } = Path.Combine(Folder, "customEvents.json");
+        public static string EventsFile { get; } = Path.Combine(Folder, "customEvents.json");
     }
 }
 
